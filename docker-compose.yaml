@@ -1,0 +1,31 @@
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: Dockerfile.apache
+    container_name: apache_container
+    volumes:
+      - .:/var/www/html
+      - ./docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+    ports:
+      - "8000:80"
+
+  franken:
+    image: dunglas/frankenphp
+    container_name: franken_container
+    restart: always
+    #environment:
+      # FRANKENPHP_CONFIG: "worker /app/public/index.php"
+    volumes:
+      - .:/app
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "8001:80" # HTTP
+      - "443:443" # HTTPS
+      - "443:443/udp" # HTTP/3
+    # tty: true
+
+volumes:
+  caddy_data:
+  caddy_config:
