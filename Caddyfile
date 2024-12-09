@@ -1,5 +1,9 @@
 {
 	frankenphp
+
+	servers {
+        metrics
+    }
 }
 
 # The domain name of your server
