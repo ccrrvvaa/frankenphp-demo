@@ -1,3 +1,8 @@
+## Executing PHP script:
+```sh
+frankenphp php-cli test-script.php
+```
+
 ## Install Dependencies
 ```sh
 composer install
@@ -16,6 +21,9 @@ frankenphp php-cli artisan db:seed --class=EmployeeSeeder
 ## Setup Server Locally
 ```sh
 php artisan serve
+```
+```sh
+sudo frankenphp php-server -r public
 ```
 ```sh
 sudo frankenphp run
